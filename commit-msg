@@ -1,0 +1,14 @@
+#!/bin/bash
+
+COMMIT_MSG=$(cat "$1")
+
+REGEX="^(feat|fix|chore):"
+
+if [[ $COMMIT_MSG =~ $REGEX ]]; then
+    echo "Message de commit valide."
+    exit 0
+else
+    echo "Erreur : Le message de commit doit commencer par 'feat:', 'fix:' ou 'chore:'."
+    echo "Exemple : 'feat: ajout de la connexion'"
+    exit 1
+fi
