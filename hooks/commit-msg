@@ -1,0 +1,13 @@
+#!/bin/bash
+
+COMMIT_MSG=$(cat "$1")
+
+REGEX="^(feat|fix|chore):"
+
+if [[ ! $COMMIT_MSG =~ $REGEX ]]; then
+    echo -e "\n\033[31m ERREUR : Format du message de commit invalide \033[0m"
+    echo -e "Le message doit commencer par : \033[32mfeat:, fix: ou chore:\033[0m"
+    exit 1
+fi
+
+exit 0
