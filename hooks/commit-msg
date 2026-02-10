@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+COMMIT_MSG_FILE="$1"
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+if ! [[ $COMMIT_MSG =~ ^(feat|fix|docs|style|refactor|test|chore)(\([^)]*\))?!?:\ .+ ]]; then
+  echo "Commit message does not follow the Conventional Commits format." >&2
+  echo "Please use the format: <type>(<scope>): <description>" >&2
+  echo "Example: feat(auth): add login functionality" >&2
+  exit 1
+fi
+#!/bin/bash
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+if [[^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?!?: .+]]; then
+  echo "Commit message does not follow the Conventional Commits format."
+  echo "Please use the format: <type>(<scope>): <description>"
+  echo "Example: feat(auth): add login functionality"
+  exit 1
+fi
