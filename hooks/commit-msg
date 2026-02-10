@@ -1,0 +1,14 @@
+#!/bin/bash
+COMMIT_MSG=$(cat "$1")
+
+FORMAT="^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?!?: .+"
+
+if [[ ! $COMMIT_MSG =~ $FORMAT ]]; then
+    echo "Erreur : Le format du message de commit n'est pas respecté."
+    echo "Format attendu : type(scope): description"
+    echo "Types autorisés : feat, fix, docs, style, refactor, test, chore"
+    exit 1
+fi
+
+echo "Message de commit validé !"
+exit 0
