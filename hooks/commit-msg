@@ -1,0 +1,12 @@
+#!/bin/bash
+
+COMMIT_MSG_FILE=$1
+
+FORMAT="^(feat|fix|docs|chore) .+"
+
+if ! grep -qE "$FORMAT" "$COMMIT_MSG_FILE"; then
+    echo "format horrible COMMIT REFUSÉ"
+    exit 1
+fi
+
+exit 0
